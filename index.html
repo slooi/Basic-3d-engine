@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>3Game</title>
+		<style>
+			
+		</style>
+	</head>
+
+	<body>
+		<script type="shader" id="vsSource">
+			attribute vec2 a_Position;
+			uniform mat3 u_Transform;
+
+			void main(){
+				gl_Position = vec4((u_Transform*vec3(a_Position.xy/150.0,1)).xy,0,1);
+				gl_PointSize = 10.0;
+			}
+		</script>
+		<script type="shader" id="fsSource">
+			precision mediump float;
+
+			void main(){
+				gl_FragColor = vec4(0,0,0,1);
+			}
+		</script>
+		<script src="webgl.js"></script>
+		<h1>asd</h1>
+	</body>
+</html>
