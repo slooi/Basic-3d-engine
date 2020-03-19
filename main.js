@@ -9,11 +9,9 @@ function setup(){
 
 function tick(){
 	camera.update()
-	console.log(camera.lastTime > controls.getLastTime())
 	if(camera.lastTime > controls.getLastTime()){
 		updateTransformCam(camera.getInvMatrix())
 	}else{
-		console.log('false!')
 		updateTransform(...controls.getAllSliderValues())
 	}
 

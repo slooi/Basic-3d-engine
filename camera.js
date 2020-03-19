@@ -8,6 +8,7 @@ class Camera{
 		this.yRot = 0
 		// this.zRot = 0
 		this.speed = 3
+		this.shiftModifier = 2
 		this.angleSpeed = 3
 		this.lastTime = new Date(0, 0, 0)
 
@@ -18,6 +19,7 @@ class Camera{
 			d: false,
 			q: false,
 			e: false,
+			shift: false,
 			arrowup: false,
 			arrowdown: false,
 			arrowleft: false,
@@ -56,33 +58,37 @@ class Camera{
 	// }
 
 	update(){
+		let speed = this.speed 
+		if(this.keyDown.shift)
+			speed=speed*this.shiftModifier
+
 		// update camera values
 		if(this.keyDown.w){
-			this.z += Math.cos(this.yRot*Math.PI/180) * this.speed
-			this.x += Math.sin(this.yRot*Math.PI/180) * this.speed 
+			this.z += Math.cos(this.yRot*Math.PI/180) * speed
+			this.x += Math.sin(this.yRot*Math.PI/180) * speed 
 			this.lastTime = new Date()
 		}
 		if(this.keyDown.s){
-			this.z -= Math.cos(this.yRot*Math.PI/180) * this.speed
-			this.x -= Math.sin(this.yRot*Math.PI/180) * this.speed 
+			this.z -= Math.cos(this.yRot*Math.PI/180) * speed
+			this.x -= Math.sin(this.yRot*Math.PI/180) * speed 
 			this.lastTime = new Date()
 		}
 		if(this.keyDown.a){
-			this.z += Math.sin(this.yRot*Math.PI/180) * this.speed
-			this.x -= Math.cos(this.yRot*Math.PI/180) * this.speed 
+			this.z += Math.sin(this.yRot*Math.PI/180) * speed
+			this.x -= Math.cos(this.yRot*Math.PI/180) * speed 
 			this.lastTime = new Date()
 		}
 		if(this.keyDown.d){
-			this.z -= Math.sin(this.yRot*Math.PI/180) * this.speed
-			this.x += Math.cos(this.yRot*Math.PI/180) * this.speed 
+			this.z -= Math.sin(this.yRot*Math.PI/180) * speed
+			this.x += Math.cos(this.yRot*Math.PI/180) * speed 
 			this.lastTime = new Date()
 		}
 		if(this.keyDown.q){
-			this.y -= this.speed
+			this.y -= speed
 			this.lastTime = new Date()
 		}
 		if(this.keyDown.e){
-			this.y += this.speed
+			this.y += speed
 			this.lastTime = new Date()
 		}
 		if(this.keyDown.arrowright){
