@@ -4,29 +4,105 @@
 	<head>
 		<meta charset="UTF-8"/>
 		<title>3Game</title>
-		<style>
-			
-		</style>
+		<link href="style.css" type="text/css" rel="stylesheet"/>
 	</head>
 
 	<body>
+		<!-- SHADER SOURCE -->
+		<!-- vsSource -->
 		<script type="shader" id="vsSource">
-			attribute vec2 a_Position;
-			uniform mat3 u_Transform;
+			attribute vec4 a_Position;
+			attribute vec3 a_Color;
+
+			varying vec3 v_Color;
+
+			uniform mat4 u_Transform;
 
 			void main(){
-				gl_Position = vec4((u_Transform*vec3(a_Position.xy/150.0,1)).xy,0,1);
-				gl_PointSize = 10.0;
+				v_Color = a_Color;
+
+				gl_Position = u_Transform*a_Position;
+				gl_PointSize = 3.0;
 			}
 		</script>
+		<!-- fsSource -->
 		<script type="shader" id="fsSource">
 			precision mediump float;
 
+			varying vec3 v_Color;
+
 			void main(){
-				gl_FragColor = vec4(0,0,0,1);
+				gl_FragColor = vec4(v_Color,1);
 			}
 		</script>
+
+		<script src="data.js"></script>
 		<script src="webgl.js"></script>
-		<h1>asd</h1>
+		<script src="camera.js"></script>
+		<script src="main.js"></script>
+		<script src="controls.js"></script>
+		
+		<table id="controls">
+			<tr>
+				<td class="label">xTranslate</td>
+				<td><input min="-200" max="200" step="1" type="range"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="label">yTranslate</td>
+				<td><input min="-200" max="200" step="1" type="range"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="label">zTranslate</td>
+				<td><input min="-400" max="400" step="1" type="range"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="label">xRotate</td>
+				<td><input min="0" max="360" step="1" type="range"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="label">yRotate</td>
+				<td><input min="0" max="360" step="1" type="range"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="label">zRotate</td>
+				<td><input min="0" max="360" step="1" type="range"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="label">xScale</td>
+				<td><input min="-10" max="10" step="0.1" type="range"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="label">yScale</td>
+				<td><input min="-10" max="10" step="0.1" type="range"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="label">zScale</td>
+				<td><input min="-10" max="10" step="0.1" type="range"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="label">xOrigin</td>
+				<td><input min="-200" max="200" step="1" type="range"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="label">yOrigin</td>
+				<td><input min="-200" max="200" step="1" type="range"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="label">zOrigin</td>
+				<td><input min="-400" max="400" step="1" type="range"></td>
+				<td></td>
+			</tr>
+		</table>
 	</body>
 </html>

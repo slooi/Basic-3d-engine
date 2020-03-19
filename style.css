@@ -1,0 +1,9 @@
+canvas{
+	float: left;
+}
+#controls{
+	padding: 0 0 0 1rem;
+}
+.label{
+	float:right;
+}
