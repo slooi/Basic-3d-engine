@@ -1,5 +1,5 @@
 # Basic-3d-engine
-Basic 3d engine. Demo: https://slooi.github.io/Basic-3d-engine/.
+Basic 3d engine.
 ## Controls
 w - move forwards
 
