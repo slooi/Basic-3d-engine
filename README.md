@@ -1,4 +1,4 @@
-# Basic-3d-engine
+# Basic-3d-renderer
 Basic 3d engine. Camera faces POSTIVE z axis.
 ## Controls
 w - move forwards
